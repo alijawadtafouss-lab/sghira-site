@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>2026 Celebration ♥ sghira</title>
+<title>2026 Cinematic ♥ sghira</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -51,14 +51,15 @@ button{padding:12px 34px;border-radius:30px;border:none;cursor:pointer;font-size
 .yes{background:linear-gradient(135deg,var(--pink),var(--gold));color:#000;}
 .no{background:transparent;border:1px solid rgba(255,255,255,.4);color:white;}
 
-/* Intro animation */
-#intro{position:fixed;inset:0;background:#050507;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-family:"Playfair Display",serif;font-size:3rem;z-index:10;cursor:pointer;}
+/* Intro Cinematic */
+#intro{position:fixed;inset:0;background:#050507;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-family:"Playfair Display",serif;font-size:3rem;z-index:10;cursor:pointer;opacity:1;transition:opacity 1s;}
+#intro.fadeout{opacity:0;}
 @media(max-width:480px){h1{font-size:2rem}.heart{width:220px;height:200px}#intro{font-size:2rem}}
 </style>
 </head>
 <body>
 
-<!-- Music & sound -->
+<!-- Music & sounds -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_7a0c4f98c3.mp3" type="audio/mpeg">
 </audio>
@@ -91,7 +92,7 @@ function createConfetti(){
 </script>
 
 <!-- Intro -->
-<div id="intro">🎉 Happy 2026 🎉<br><small>(Click anywhere)</small></div>
+<div id="intro">🎬 2026 Cinematic 🎉<br><small>(Click to start)</small></div>
 
 <div class="wrapper" id="wrapper" style="display:none;">
   <div class="heart" id="heart"></div>
@@ -112,6 +113,7 @@ function createConfetti(){
 </div>
 
 <script>
+/* Heart shape words */
 const heart=document.getElementById("heart");
 const count=130;
 for(let i=0;i<count;i++){
@@ -132,17 +134,18 @@ heart.addEventListener("click",()=>{document.getElementById("overlay").classList
 function no(){alert("I respect your choice.");}
 function yes(){document.getElementById("overlay").classList.add("show");}
 
-/* Intro click => start everything */
+/* Intro click => start cinematic + music + confetti */
 document.getElementById("intro").addEventListener("click",()=>{
-  document.getElementById("intro").style.display="none";
-  document.getElementById("wrapper").style.display="block";
-  createConfetti();
-  document.getElementById("music").play();
-  document.getElementById("pop").play();
+  const intro=document.getElementById("intro");
+  intro.classList.add("fadeout");
+  setTimeout(()=>{
+    intro.style.display="none";
+    document.getElementById("wrapper").style.display="block";
+    createConfetti();
+    document.getElementById("music").play();
+    document.getElementById("pop").play();
+  },1000);
 });
-
-/* Auto hide intro after 3s if no click */
-setTimeout(()=>{document.getElementById("intro").click();},3000);
 </script>
 
 </body>
