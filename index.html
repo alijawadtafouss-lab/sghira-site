@@ -4,23 +4,26 @@
 <meta charset="UTF-8">
 <title>Jawad ♥ sghira</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --pink:#ff5fa2;
-  --purple:#2b0f33;
+  --pink:#ff6f91;
   --gold:#e6c77b;
+  --purple:#2b0f2f;
+  --dark:#07070a;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   min-height:100vh;
-  background:radial-gradient(circle at top, #4a1457, #050507);
-  overflow:hidden;
+  background: radial-gradient(circle at top, #3a123f, #050507);
   font-family:"Poppins",sans-serif;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   color:white;
 }
 
@@ -38,104 +41,56 @@ body{
   50%{opacity:1}
 }
 
-/* Layout */
+/* Wrapper */
 .wrapper{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.card{
+  position:relative;
   text-align:center;
   max-width:420px;
   width:100%;
-  padding:50px 25px;
-  animation:fadeIn 2s ease;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
 }
 
 /* Heart */
 .heart{
   position:relative;
-  width:260px;
-  height:240px;
+  width:280px;
+  height:280px;
   margin:0 auto 30px;
-  animation:float 6s ease-in-out infinite;
+  animation:heartbeat 1.5s infinite;
 }
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+@keyframes heartbeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
 }
+
+/* Words in heart */
 .word{
   position:absolute;
-  font-size:.85rem;
+  font-size:.9rem;
   color:var(--pink);
   opacity:.9;
+  font-weight:600;
+  text-shadow:0 0 3px rgba(255,111,145,.8);
 }
 
-/* Text */
+/* Center text */
 h1{
   font-family:"Playfair Display",serif;
-  font-size:2.5rem;
+  font-size:2.8rem;
   margin-bottom:10px;
-}
-.subtitle{
-  font-size:1.1rem;
-  opacity:.9;
+  text-shadow:0 0 10px rgba(255,111,145,.7);
 }
 .signature{
-  margin-top:8px;
   font-family:"Playfair Display",serif;
-  color:var(--gold);
-}
-
-/* Buttons */
-.actions{
-  margin-top:35px;
-  display:flex;
-  justify-content:center;
-  gap:16px;
-}
-
-button{
-  padding:12px 34px;
-  border-radius:30px;
-  border:none;
-  cursor:pointer;
   font-size:1rem;
+  color:var(--gold);
+  margin-top:6px;
 }
 
-.yes{
-  background:linear-gradient(135deg,var(--pink),var(--gold));
-  color:#000;
-}
-.no{
-  background:transparent;
-  border:1px solid rgba(255,255,255,.4);
-  color:white;
-}
-
-/* 🎵 Music button */
-.music-btn{
-  margin-top:25px;
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.4);
-  color:white;
-  padding:10px 24px;
-  border-radius:25px;
-  cursor:pointer;
-}
-
-/* Overlay */
+/* Overlay (YES) */
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(5,5,8,.96);
+  background:rgba(5,5,8,.95);
   display:none;
   align-items:center;
   justify-content:center;
@@ -143,29 +98,24 @@ button{
   padding:30px;
 }
 .overlay.show{display:flex}
-
 .overlay h2{
   font-family:"Playfair Display",serif;
-  font-size:2.3rem;
+  font-size:2.4rem;
+  margin-bottom:15px;
+  color:var(--pink);
 }
 .overlay p{
-  margin-top:15px;
   font-size:1.1rem;
+  opacity:.9;
   line-height:1.6;
-}
-
-/* Mobile */
-@media(max-width:480px){
-  h1{font-size:2rem}
-  .heart{width:220px;height:200px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Music -->
-<audio id="music" loop>
+<!-- 🎵 Romantic music autoplay -->
+<audio autoplay loop>
   <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_7a0c4f98c3.mp3" type="audio/mpeg">
 </audio>
 
@@ -182,39 +132,27 @@ for(let i=0;i<200;i++){
 </script>
 
 <div class="wrapper">
-  <div class="card">
-
-    <div class="heart" id="heart"></div>
-
-    <h1>sghira</h1>
-    <div class="subtitle">May I be the one who stays by your side?</div>
-    <div class="signature">— Jawad</div>
-
-    <div class="actions">
-      <button class="yes" onclick="yes()">YES</button>
-      <button class="no" onclick="no()">NO</button>
-    </div>
-
-    <button class="music-btn" onclick="playMusic()">▶ Play music</button>
-
-  </div>
+  <div class="heart" id="heart"></div>
+  <h1>sghira</h1>
+  <div class="signature">— Jawad</div>
 </div>
 
 <div class="overlay" id="overlay">
   <div>
-    <h2>Thank you</h2>
+    <h2>♥ Yes! ♥</h2>
     <p>
       From this moment on,<br>
-      my heart chooses you — always.
+      my heart chooses you every day,<br>
+      with love, respect, and sincerity.
     </p>
-    <p style="margin-top:18px;color:var(--gold)">— Jawad</p>
+    <p style="margin-top:15px;color:var(--gold)">— Jawad</p>
   </div>
 </div>
 
 <script>
-/* Heart shape */
+/* Heart shape words */
 const heart=document.getElementById("heart");
-const count=120;
+const count=130;
 for(let i=0;i<count;i++){
   const span=document.createElement("span");
   span.className="word";
@@ -224,23 +162,17 @@ for(let i=0;i<count;i++){
   const x=16*Math.pow(Math.sin(t),3);
   const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
 
-  const scale=6.2;
+  const scale=7;
   span.style.left=50+x*scale+"%";
   span.style.top=50-y*scale+"%";
 
   heart.appendChild(span);
 }
 
-/* Actions */
-function yes(){
+/* Simulate click on heart = YES */
+heart.addEventListener("click",()=>{
   document.getElementById("overlay").classList.add("show");
-}
-function no(){
-  alert("I respect your choice.");
-}
-function playMusic(){
-  document.getElementById("music").play();
-}
+});
 </script>
 
 </body>
