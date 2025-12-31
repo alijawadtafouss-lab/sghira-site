@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ali ❤️ Salma</title>
+<title>For Salma</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -10,11 +10,11 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:"Poppins",Arial,sans-serif;
+  font-family:"Poppins", Arial, sans-serif;
 }
 
 body{
-  background: radial-gradient(circle at top, #2b0033, #000);
+  background: radial-gradient(circle at top, #3a0026, #000);
   height:100vh;
   display:flex;
   justify-content:center;
@@ -22,30 +22,25 @@ body{
   overflow:hidden;
 }
 
-/* ⭐ Stars */
+/* ✨ Stars */
 .star{
   position:absolute;
   width:2px;
   height:2px;
-  background:white;
-  opacity:.8;
+  background:#ffd6e8;
+  opacity:.7;
   animation: twinkle 3s infinite ease-in-out;
 }
 @keyframes twinkle{
-  0%,100%{opacity:.2}
+  0%,100%{opacity:.3}
   50%{opacity:1}
 }
 
-/* ❤️ Heart */
+/* ❤️ Heart container (no rotation) */
 .container{
   position:relative;
   width:340px;
   height:340px;
-  animation: rotate 22s linear infinite;
-}
-@keyframes rotate{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
 }
 
 /* 💕 Words */
@@ -53,32 +48,33 @@ body{
   position:absolute;
   font-size:.95rem;
   white-space:nowrap;
-  background: linear-gradient(45deg, gold, #ff3366, #a855f7);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:pulse 2s infinite;
+  color:#ffb3d9;
+  text-shadow:
+    0 0 6px rgba(255,179,217,.8),
+    0 0 14px rgba(255,105,180,.6);
+  animation:pulse 2.2s ease-in-out infinite;
 }
 @keyframes pulse{
   0%{transform:scale(1);opacity:.6}
-  50%{transform:scale(1.4);opacity:1}
+  50%{transform:scale(1.25);opacity:1}
   100%{transform:scale(1);opacity:.6}
 }
 
-/* 💖 Center */
+/* 💖 Center text */
 .center-text{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
-  color:white;
-  font-size:1.8rem;
-  font-weight:700;
+  color:#fff;
+  font-size:1.9rem;
+  font-weight:600;
+  letter-spacing:1px;
   text-shadow:
-    0 0 10px gold,
-    0 0 25px #ff3366,
-    0 0 35px #a855f7;
-  animation: glow 1.5s infinite alternate;
+    0 0 8px rgba(255,255,255,.6),
+    0 0 20px rgba(255,105,180,.9);
+  animation: glow 1.8s infinite alternate;
 }
 @keyframes glow{
   from{opacity:.7}
@@ -87,7 +83,7 @@ body{
 
 .center-text span{
   display:block;
-  font-size:1.1rem;
+  font-size:1.15rem;
   margin-top:8px;
   opacity:.9;
 }
@@ -95,11 +91,11 @@ body{
 /* 💍 Buttons */
 .buttons{
   position:absolute;
-  bottom:-95px;
+  bottom:-85px;
   width:100%;
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:18px;
 }
 
 button{
@@ -112,16 +108,17 @@ button{
 }
 
 .yes{
-  background:linear-gradient(45deg,#ff3366,gold);
-  color:white;
+  background:linear-gradient(45deg,#ff6fa5,#ffd1e8);
+  color:#fff;
 }
 .no{
-  background:#444;
-  color:white;
+  background:#555;
+  color:#fff;
 }
-button:hover{transform:scale(1.1)}
 
-/* Message */
+button:hover{transform:scale(1.08)}
+
+/* 💌 Message */
 .message{
   position:absolute;
   inset:0;
@@ -131,7 +128,7 @@ button:hover{transform:scale(1.1)}
   align-items:center;
   text-align:center;
   color:white;
-  font-size:1.8rem;
+  font-size:1.7rem;
   padding:20px;
 }
 .message.show{
@@ -146,21 +143,21 @@ button:hover{transform:scale(1.1)}
 /* 📱 Mobile */
 @media(max-width:480px){
   .container{width:280px;height:280px}
-  .center-text{font-size:1.5rem}
+  .center-text{font-size:1.6rem}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Music -->
+<!-- 🎵 Romantic music (soft piano) -->
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/30/audio_53b6efdbd4.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/10/03/audio_9f9f7b5f96.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ⭐ Stars -->
+<!-- ✨ Stars -->
 <script>
-for(let i=0;i<140;i++){
+for(let i=0;i<130;i++){
   const s=document.createElement("div");
   s.className="star";
   s.style.left=Math.random()*100+"%";
@@ -173,10 +170,10 @@ for(let i=0;i<140;i++){
 <!-- ❤️ Heart -->
 <div class="container" id="container">
   <div class="center-text">
-    سلمى sghira 💖
-    <span>Will you be mine? 💍</span>
-    <span style="font-size:.9rem;opacity:.7;margin-top:6px;">
-      — Ali jawad
+    Salma 💖
+    <span>Will you be mine?</span>
+    <span style="font-size:.9rem;opacity:.7;">
+      — Jawad
     </span>
   </div>
 
@@ -187,16 +184,16 @@ for(let i=0;i<140;i++){
 </div>
 
 <div class="message" id="msg">
-  💖 YES!! 💖<br><br>
-  سلمى sghira ❤️<br>
-  دابا ولات رسمية<br><br>
-  — Ali jawad 🌹
+  💖 YES 💖<br><br>
+  This moment means everything to me.<br>
+  Thank you for choosing my heart.<br><br>
+  — Jawad 🌹
 </div>
 
 <script>
 const container=document.getElementById("container");
 const text="I love you";
-const count=140;
+const count=120;
 
 for(let i=0;i<count;i++){
   const span=document.createElement("span");
@@ -219,7 +216,7 @@ function yes(){
 }
 
 function no(){
-  alert("😅 فكري مزيان… علي ما غاديش يهرب ❤️");
+  alert("😊 Take your time… my heart is patient.");
 }
 </script>
 
