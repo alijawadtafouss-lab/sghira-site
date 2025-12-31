@@ -1,21 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Test</title>
-  <style>
-    body {
-      background: black;
-      color: pink;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-size: 40px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Love Animation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 420px;
+  height: 420px;
+}
+
+.word {
+  position: absolute;
+  color: #ff8fb1;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  text-shadow:
+    0 0 6px rgba(255,143,177,.8),
+    0 0 14px rgba(255,143,177,.6);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: .6; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: .6; }
+}
+
+.title {
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  opacity: .8;
+}
+</style>
 </head>
+
 <body>
-  ❤️ مرحبا Ali، راه خدام ❤️
+
+<div class="container" id="container"></div>
+<div class="title">💖 I love you 💖</div>
+
+<script>
+const container = document.getElementById("container");
+const text = "I love you";
+const count = 120;
+
+for (let i = 0; i < count; i++) {
+  const span = document.createElement("span");
+  span.className = "word";
+  span.innerText = text;
+
+  const t = i / count * Math.PI * 2;
+  const x = 16 * Math.pow(Math.sin(t), 3);
+  const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+
+  const scale = 10;
+  span.style.left = 50 + x * scale + "%";
+  span.style.top  = 50 - y * scale + "%";
+  span.style.animationDelay = (i * 0.03) + "s";
+
+  container.appendChild(span);
+}
+</script>
+
 </body>
 </html>
