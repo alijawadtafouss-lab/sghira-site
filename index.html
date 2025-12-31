@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Jawad ♥ sghira</title>
+<title>2026 Celebration ♥ sghira</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
@@ -14,11 +15,13 @@
   --dark:#07070a;
 }
 
+/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;}
 
+/* Body */
 body{
   min-height:100vh;
-  background: radial-gradient(circle at top, #3a123f, #050507);
+  background:radial-gradient(circle at top, #3a123f, #050507);
   font-family:"Poppins",sans-serif;
   overflow:hidden;
   display:flex;
@@ -27,7 +30,7 @@ body{
   color:white;
 }
 
-/* 🌌 Stars */
+/* Stars */
 .star{
   position:absolute;
   width:2px;
@@ -41,11 +44,24 @@ body{
   50%{opacity:1}
 }
 
+/* Confetti */
+.confetti{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:var(--gold);
+  top:-10px;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
 /* Wrapper */
 .wrapper{
   position:relative;
   text-align:center;
-  max-width:420px;
+  max-width:480px;
   width:100%;
 }
 
@@ -86,7 +102,7 @@ h1{
   margin-top:6px;
 }
 
-/* Overlay (YES) */
+/* Overlay */
 .overlay{
   position:fixed;
   inset:0;
@@ -109,17 +125,65 @@ h1{
   opacity:.9;
   line-height:1.6;
 }
+
+/* Buttons */
+.actions{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+}
+button{
+  padding:12px 34px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+}
+.yes{
+  background:linear-gradient(135deg,var(--pink),var(--gold));
+  color:#000;
+}
+.no{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.4);
+  color:white;
+}
+
+/* Intro animation */
+#intro{
+  position:fixed;
+  inset:0;
+  background:#050507;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:white;
+  font-family:"Playfair Display",serif;
+  font-size:3rem;
+  z-index:10;
+  opacity:1;
+  transition:opacity 1s ease;
+}
+
+/* Mobile */
+@media(max-width:480px){
+  h1{font-size:2rem}
+  .heart{width:220px;height:200px}
+  #intro{font-size:2rem}
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Romantic music autoplay -->
+<!-- Music -->
 <audio autoplay loop>
   <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_7a0c4f98c3.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🌌 Stars -->
+<!-- Stars -->
 <script>
 for(let i=0;i<200;i++){
   const s=document.createElement("div");
@@ -131,20 +195,38 @@ for(let i=0;i<200;i++){
 }
 </script>
 
-<div class="wrapper">
+<!-- Confetti -->
+<script>
+function createConfetti(){
+  for(let i=0;i<40;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"%";
+    c.style.background=`hsl(${Math.random()*360},80%,60%)`;
+    c.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(c);
+  }
+}
+</script>
+
+<!-- Intro -->
+<div id="intro">🎉 Happy 2026 🎉</div>
+
+<div class="wrapper" id="wrapper" style="display:none;">
   <div class="heart" id="heart"></div>
   <h1>sghira</h1>
   <div class="signature">— Jawad</div>
+
+  <div class="actions">
+    <button class="yes" onclick="yes()">YES</button>
+    <button class="no" onclick="no()">NO</button>
+  </div>
 </div>
 
 <div class="overlay" id="overlay">
   <div>
     <h2>♥ Yes! ♥</h2>
-    <p>
-      From this moment on,<br>
-      my heart chooses you every day,<br>
-      with love, respect, and sincerity.
-    </p>
+    <p>My heart chooses you every day, with love, respect, and sincerity.</p>
     <p style="margin-top:15px;color:var(--gold)">— Jawad</p>
   </div>
 </div>
@@ -169,10 +251,22 @@ for(let i=0;i<count;i++){
   heart.appendChild(span);
 }
 
-/* Simulate click on heart = YES */
-heart.addEventListener("click",()=>{
-  document.getElementById("overlay").classList.add("show");
-});
+/* Heart click => YES overlay */
+heart.addEventListener("click",()=>{document.getElementById("overlay").classList.add("show");});
+
+/* NO button */
+function no(){alert("I respect your choice.");}
+function yes(){document.getElementById("overlay").classList.add("show");}
+
+/* Intro simulation */
+setTimeout(()=>{
+  document.getElementById("intro").style.opacity=0;
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.getElementById("wrapper").style.display="block";
+    createConfetti();
+  },1000);
+},3000);
 </script>
 
 </body>
