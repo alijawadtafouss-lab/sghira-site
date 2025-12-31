@@ -5,69 +5,105 @@
 <title>Jawad ♥ sghira</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --gold:#d4af37;
-  --dark:#0b0b0e;
-  --soft:#bfae70;
+  --pink:#e56b9f;
+  --gold:#d6b36a;
+  --purple:#2a0f2f;
+  --dark:#07070a;
 }
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: "Playfair Display", "Poppins", serif;
 }
 
 body{
   min-height:100vh;
-  background: radial-gradient(circle at top, #16161d, #050507);
+  background:
+    radial-gradient(circle at top, #3a123f, #060608);
+  overflow:hidden;
+  font-family:"Poppins", sans-serif;
+  color:white;
+}
+
+/* 🌌 Stars */
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:.6;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:.2}
+  50%{opacity:1}
+}
+
+/* Center layout */
+.wrapper{
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#f5f5f5;
+  padding:20px;
 }
 
-/* Card */
 .card{
-  width:100%;
+  position:relative;
   max-width:420px;
-  padding:50px 30px;
+  width:100%;
+  padding:60px 30px;
   text-align:center;
+  backdrop-filter: blur(8px);
 }
 
-/* Heart */
+/* Heart made of words */
 .heart{
   position:relative;
-  width:240px;
-  height:220px;
+  width:260px;
+  height:240px;
   margin:0 auto 35px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
 .word{
   position:absolute;
-  font-size:.8rem;
-  color:var(--soft);
+  font-size:.85rem;
+  color:var(--pink);
   opacity:.85;
 }
 
 /* Text */
 h1{
-  font-size:2.2rem;
-  font-weight:500;
-  letter-spacing:1px;
-  margin-bottom:10px;
+  font-family:"Playfair Display", serif;
+  font-size:2.4rem;
+  font-weight:600;
+  color:#fff;
+  margin-bottom:12px;
 }
 
 .subtitle{
   font-size:1.05rem;
   opacity:.85;
-  margin-bottom:10px;
+  margin-bottom:14px;
 }
 
 .signature{
-  font-size:.95rem;
-  opacity:.6;
+  font-family:"Playfair Display", serif;
+  font-size:1rem;
+  color:var(--gold);
+  letter-spacing:1px;
 }
 
 /* Buttons */
@@ -75,30 +111,34 @@ h1{
   margin-top:35px;
   display:flex;
   justify-content:center;
-  gap:16px;
+  gap:18px;
 }
 
 button{
-  padding:12px 30px;
+  padding:12px 34px;
   border-radius:30px;
   font-size:1rem;
   cursor:pointer;
-  border:1px solid var(--gold);
-  background:transparent;
-  color:var(--gold);
-  transition:.3s ease;
+  border:none;
+  font-family:"Poppins", sans-serif;
 }
 
-button:hover{
-  background:var(--gold);
+.yes{
+  background:linear-gradient(135deg,var(--pink),var(--gold));
   color:#000;
+}
+
+.no{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.4);
+  color:white;
 }
 
 /* Overlay */
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(5,5,7,.96);
+  background:rgba(5,5,8,.96);
   display:none;
   align-items:center;
   justify-content:center;
@@ -111,54 +151,77 @@ button:hover{
 }
 
 .overlay h2{
-  font-size:2rem;
-  margin-bottom:15px;
+  font-family:"Playfair Display", serif;
+  font-size:2.2rem;
+  margin-bottom:18px;
 }
 
 .overlay p{
   font-size:1.1rem;
-  opacity:.85;
+  opacity:.9;
+  line-height:1.6;
 }
 
 /* Mobile */
 @media(max-width:480px){
-  h1{font-size:1.9rem}
-  .heart{width:210px;height:190px}
+  h1{font-size:2rem}
+  .heart{width:220px;height:200px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<!-- 🎵 Romantic music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/11/10/audio_8f2d79c5b5.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="heart" id="heart"></div>
+<!-- 🌌 Stars -->
+<script>
+for(let i=0;i<180;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*3+"s";
+  document.body.appendChild(s);
+}
+</script>
 
-  <h1>sghira</h1>
-  <div class="subtitle">Would you allow me to be part of your life?</div>
-  <div class="signature">— Jawad</div>
+<div class="wrapper">
+  <div class="card">
 
-  <div class="actions">
-    <button onclick="yes()">YES</button>
-    <button onclick="no()">NO</button>
+    <div class="heart" id="heart"></div>
+
+    <h1>sghira</h1>
+    <div class="subtitle">May I be the one who walks beside you?</div>
+    <div class="signature">— Jawad</div>
+
+    <div class="actions">
+      <button class="yes" onclick="yes()">YES</button>
+      <button class="no" onclick="no()">NO</button>
+    </div>
+
   </div>
-
 </div>
 
 <div class="overlay" id="overlay">
   <div>
     <h2>Thank you</h2>
     <p>
-      I promise sincerity, respect,<br>
+      I don’t promise perfection,<br>
+      but I promise honesty, respect,<br>
       and a heart that chooses you every day.
     </p>
-    <p style="margin-top:18px;opacity:.6;">— Jawad</p>
+    <p style="margin-top:18px;color:var(--gold)">— Jawad</p>
   </div>
 </div>
 
 <script>
+/* Heart shape */
 const heart=document.getElementById("heart");
-const count=80;
+const count=110;
 
 for(let i=0;i<count;i++){
   const span=document.createElement("span");
@@ -169,7 +232,7 @@ for(let i=0;i<count;i++){
   const x=16*Math.pow(Math.sin(t),3);
   const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
 
-  const scale=5.5;
+  const scale=6.2;
   span.style.left=50+x*scale+"%";
   span.style.top=50-y*scale+"%";
 
