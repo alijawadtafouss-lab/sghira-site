@@ -2,221 +2,185 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Salma</title>
+<title>Jawad ♥ sghira</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root{
+  --gold:#d4af37;
+  --dark:#0b0b0e;
+  --soft:#bfae70;
+}
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:"Poppins", Arial, sans-serif;
+  font-family: "Playfair Display", "Poppins", serif;
 }
 
 body{
-  background: radial-gradient(circle at top, #3a0026, #000);
-  height:100vh;
+  min-height:100vh;
+  background: radial-gradient(circle at top, #16161d, #050507);
   display:flex;
-  justify-content:center;
   align-items:center;
-  overflow:hidden;
+  justify-content:center;
+  color:#f5f5f5;
 }
 
-/* ✨ Stars */
-.star{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:#ffd6e8;
-  opacity:.7;
-  animation: twinkle 3s infinite ease-in-out;
-}
-@keyframes twinkle{
-  0%,100%{opacity:.3}
-  50%{opacity:1}
+/* Card */
+.card{
+  width:100%;
+  max-width:420px;
+  padding:50px 30px;
+  text-align:center;
 }
 
-/* ❤️ Heart container (no rotation) */
-.container{
+/* Heart */
+.heart{
   position:relative;
-  width:340px;
-  height:340px;
+  width:240px;
+  height:220px;
+  margin:0 auto 35px;
 }
 
-/* 💕 Words */
 .word{
   position:absolute;
-  font-size:.95rem;
-  white-space:nowrap;
-  color:#ffb3d9;
-  text-shadow:
-    0 0 6px rgba(255,179,217,.8),
-    0 0 14px rgba(255,105,180,.6);
-  animation:pulse 2.2s ease-in-out infinite;
-}
-@keyframes pulse{
-  0%{transform:scale(1);opacity:.6}
-  50%{transform:scale(1.25);opacity:1}
-  100%{transform:scale(1);opacity:.6}
+  font-size:.8rem;
+  color:var(--soft);
+  opacity:.85;
 }
 
-/* 💖 Center text */
-.center-text{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
-  color:#fff;
-  font-size:1.9rem;
-  font-weight:600;
+/* Text */
+h1{
+  font-size:2.2rem;
+  font-weight:500;
   letter-spacing:1px;
-  text-shadow:
-    0 0 8px rgba(255,255,255,.6),
-    0 0 20px rgba(255,105,180,.9);
-  animation: glow 1.8s infinite alternate;
-}
-@keyframes glow{
-  from{opacity:.7}
-  to{opacity:1}
+  margin-bottom:10px;
 }
 
-.center-text span{
-  display:block;
-  font-size:1.15rem;
-  margin-top:8px;
-  opacity:.9;
+.subtitle{
+  font-size:1.05rem;
+  opacity:.85;
+  margin-bottom:10px;
 }
 
-/* 💍 Buttons */
-.buttons{
-  position:absolute;
-  bottom:-85px;
-  width:100%;
+.signature{
+  font-size:.95rem;
+  opacity:.6;
+}
+
+/* Buttons */
+.actions{
+  margin-top:35px;
   display:flex;
   justify-content:center;
-  gap:18px;
+  gap:16px;
 }
 
 button{
-  padding:10px 22px;
-  border:none;
-  border-radius:25px;
+  padding:12px 30px;
+  border-radius:30px;
   font-size:1rem;
   cursor:pointer;
-  transition:.3s;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  transition:.3s ease;
 }
 
-.yes{
-  background:linear-gradient(45deg,#ff6fa5,#ffd1e8);
-  color:#fff;
-}
-.no{
-  background:#555;
-  color:#fff;
+button:hover{
+  background:var(--gold);
+  color:#000;
 }
 
-button:hover{transform:scale(1.08)}
-
-/* 💌 Message */
-.message{
-  position:absolute;
+/* Overlay */
+.overlay{
+  position:fixed;
   inset:0;
-  background:rgba(0,0,0,.92);
+  background:rgba(5,5,7,.96);
   display:none;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
-  color:white;
-  font-size:1.7rem;
-  padding:20px;
-}
-.message.show{
-  display:flex;
-  animation: fade 1s;
-}
-@keyframes fade{
-  from{opacity:0}
-  to{opacity:1}
+  padding:30px;
 }
 
-/* 📱 Mobile */
+.overlay.show{
+  display:flex;
+}
+
+.overlay h2{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+.overlay p{
+  font-size:1.1rem;
+  opacity:.85;
+}
+
+/* Mobile */
 @media(max-width:480px){
-  .container{width:280px;height:280px}
-  .center-text{font-size:1.6rem}
+  h1{font-size:1.9rem}
+  .heart{width:210px;height:190px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Romantic music (soft piano) -->
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/10/03/audio_9f9f7b5f96.mp3" type="audio/mpeg">
-</audio>
+<div class="card">
 
-<!-- ✨ Stars -->
-<script>
-for(let i=0;i<130;i++){
-  const s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*100+"%";
-  s.style.top=Math.random()*100+"%";
-  s.style.animationDelay=Math.random()*3+"s";
-  document.body.appendChild(s);
-}
-</script>
+  <div class="heart" id="heart"></div>
 
-<!-- ❤️ Heart -->
-<div class="container" id="container">
-  <div class="center-text">
-    Salma 💖
-    <span>Will you be mine?</span>
-    <span style="font-size:.9rem;opacity:.7;">
-      — Jawad
-    </span>
+  <h1>sghira</h1>
+  <div class="subtitle">Would you allow me to be part of your life?</div>
+  <div class="signature">— Jawad</div>
+
+  <div class="actions">
+    <button onclick="yes()">YES</button>
+    <button onclick="no()">NO</button>
   </div>
 
-  <div class="buttons">
-    <button class="yes" onclick="yes()">YES 💍</button>
-    <button class="no" onclick="no()">NO 😅</button>
+</div>
+
+<div class="overlay" id="overlay">
+  <div>
+    <h2>Thank you</h2>
+    <p>
+      I promise sincerity, respect,<br>
+      and a heart that chooses you every day.
+    </p>
+    <p style="margin-top:18px;opacity:.6;">— Jawad</p>
   </div>
 </div>
 
-<div class="message" id="msg">
-  💖 YES 💖<br><br>
-  This moment means everything to me.<br>
-  Thank you for choosing my heart.<br><br>
-  — Jawad 🌹
-</div>
-
 <script>
-const container=document.getElementById("container");
-const text="I love you";
-const count=120;
+const heart=document.getElementById("heart");
+const count=80;
 
 for(let i=0;i<count;i++){
   const span=document.createElement("span");
   span.className="word";
-  span.innerText=text;
+  span.innerText="love";
 
   const t=i/count*Math.PI*2;
   const x=16*Math.pow(Math.sin(t),3);
   const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
 
-  const scale=8;
+  const scale=5.5;
   span.style.left=50+x*scale+"%";
   span.style.top=50-y*scale+"%";
 
-  container.appendChild(span);
+  heart.appendChild(span);
 }
 
 function yes(){
-  document.getElementById("msg").classList.add("show");
+  document.getElementById("overlay").classList.add("show");
 }
-
 function no(){
-  alert("😊 Take your time… my heart is patient.");
+  alert("I respect your choice.");
 }
 </script>
 
