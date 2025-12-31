@@ -5,7 +5,6 @@
 <title>2026 Celebration ♥ sghira</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --pink:#ff6f91;
@@ -25,132 +24,45 @@ body{
   color:white;
 }
 /* Stars */
-.star{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:white;
-  opacity:.7;
-  animation:twinkle 3s infinite ease-in-out;
-}
+.star{position:absolute;width:2px;height:2px;background:white;opacity:.7;animation:twinkle 3s infinite ease-in-out;}
 @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
 /* Confetti */
-.confetti{
-  position:absolute;
-  width:10px;
-  height:10px;
-  background:var(--gold);
-  top:-10px;
-  animation:fall linear forwards;
-}
+.confetti{position:absolute;width:10px;height:10px;top:-10px;animation:fall linear forwards;}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);}}
 
 /* Wrapper */
-.wrapper{
-  position:relative;
-  text-align:center;
-  max-width:480px;
-  width:100%;
-}
+.wrapper{position:relative;text-align:center;max-width:480px;width:100%;}
 /* Heart */
-.heart{
-  position:relative;
-  width:280px;
-  height:280px;
-  margin:0 auto 30px;
-  animation:heartbeat 1.5s infinite;
-}
+.heart{position:relative;width:280px;height:280px;margin:0 auto 30px;animation:heartbeat 1.5s infinite;}
 @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.word{
-  position:absolute;
-  font-size:.9rem;
-  color:var(--pink);
-  opacity:.9;
-  font-weight:600;
-  text-shadow:0 0 3px rgba(255,111,145,.8);
-}
-/* Center text */
-h1{
-  font-family:"Playfair Display",serif;
-  font-size:2.8rem;
-  margin-bottom:10px;
-  text-shadow:0 0 10px rgba(255,111,145,.7);
-}
-.signature{
-  font-family:"Playfair Display",serif;
-  font-size:1rem;
-  color:var(--gold);
-  margin-top:6px;
-}
+.word{position:absolute;font-size:.9rem;color:var(--pink);opacity:.9;font-weight:600;text-shadow:0 0 3px rgba(255,111,145,.8);}
+h1{font-family:"Playfair Display",serif;font-size:2.8rem;margin-bottom:10px;text-shadow:0 0 10px rgba(255,111,145,.7);}
+.signature{font-family:"Playfair Display",serif;font-size:1rem;color:var(--gold);margin-top:6px;}
+
 /* Overlay */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(5,5,8,.95);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:30px;
-}
+.overlay{position:fixed;inset:0;background:rgba(5,5,8,.95);display:none;align-items:center;justify-content:center;text-align:center;padding:30px;}
 .overlay.show{display:flex}
-.overlay h2{
-  font-family:"Playfair Display",serif;
-  font-size:2.4rem;
-  margin-bottom:15px;
-  color:var(--pink);
-}
-.overlay p{
-  font-size:1.1rem;
-  opacity:.9;
-  line-height:1.6;
-}
+.overlay h2{font-family:"Playfair Display",serif;font-size:2.4rem;margin-bottom:15px;color:var(--pink);}
+.overlay p{font-size:1.1rem;opacity:.9;line-height:1.6;}
+
 /* Buttons */
-.actions{
-  margin-top:35px;
-  display:flex;
-  justify-content:center;
-  gap:16px;
-}
-button{
-  padding:12px 34px;
-  border-radius:30px;
-  border:none;
-  cursor:pointer;
-  font-size:1rem;
-}
-.yes{
-  background:linear-gradient(135deg,var(--pink),var(--gold));
-  color:#000;
-}
-.no{
-  background:transparent;
-  border:1px solid rgba(255,255,255,.4);
-  color:white;
-}
+.actions{margin-top:35px;display:flex;justify-content:center;gap:16px;}
+button{padding:12px 34px;border-radius:30px;border:none;cursor:pointer;font-size:1rem;}
+.yes{background:linear-gradient(135deg,var(--pink),var(--gold));color:#000;}
+.no{background:transparent;border:1px solid rgba(255,255,255,.4);color:white;}
+
 /* Intro animation */
-#intro{
-  position:fixed;
-  inset:0;
-  background:#050507;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  color:white;
-  font-family:"Playfair Display",serif;
-  font-size:3rem;
-  z-index:10;
-}
+#intro{position:fixed;inset:0;background:#050507;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-family:"Playfair Display",serif;font-size:3rem;z-index:10;cursor:pointer;}
 @media(max-width:480px){h1{font-size:2rem}.heart{width:220px;height:200px}#intro{font-size:2rem}}
 </style>
 </head>
 <body>
 
-<!-- Music -->
+<!-- Music & sound -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_7a0c4f98c3.mp3" type="audio/mpeg">
 </audio>
+<audio id="pop" src="https://cdn.pixabay.com/download/audio/2022/03/25/audio_3f3d9b97b1.mp3?filename=pop-117048.mp3"></audio>
 
 <!-- Stars -->
 <script>
@@ -179,7 +91,7 @@ function createConfetti(){
 </script>
 
 <!-- Intro -->
-<div id="intro">🎉 Happy 2026 🎉</div>
+<div id="intro">🎉 Happy 2026 🎉<br><small>(Click anywhere)</small></div>
 
 <div class="wrapper" id="wrapper" style="display:none;">
   <div class="heart" id="heart"></div>
@@ -200,7 +112,6 @@ function createConfetti(){
 </div>
 
 <script>
-/* Heart shape words */
 const heart=document.getElementById("heart");
 const count=130;
 for(let i=0;i<count;i++){
@@ -216,25 +127,22 @@ for(let i=0;i<count;i++){
   heart.appendChild(span);
 }
 
-/* Heart click => YES overlay */
+/* YES / NO */
 heart.addEventListener("click",()=>{document.getElementById("overlay").classList.add("show");});
-
-/* NO button */
 function no(){alert("I respect your choice.");}
 function yes(){document.getElementById("overlay").classList.add("show");}
 
-/* Intro simulation + music */
+/* Intro click => start everything */
 document.getElementById("intro").addEventListener("click",()=>{
   document.getElementById("intro").style.display="none";
   document.getElementById("wrapper").style.display="block";
   createConfetti();
   document.getElementById("music").play();
+  document.getElementById("pop").play();
 });
 
-/* Auto hide intro after 3s + play music */
-setTimeout(()=>{
-  document.getElementById("intro").click();
-},3000);
+/* Auto hide intro after 3s if no click */
+setTimeout(()=>{document.getElementById("intro").click();},3000);
 </script>
 
 </body>
